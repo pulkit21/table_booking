@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   use_doorkeeper
 
 
-  scope 'api' do
+  scope '/api' do
     resources :restaurants
 
     get '/bookings' => "booking#index"
@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     put '/booking' => "booking#update"
     delete '/booking' => "booking#destroy"
     devise_scope :user do
-      post 'users/sign_in' => "sessions#create"
-      delete 'users/sign_out' => "sessions#destroy"
+      post '/users/sign_in' => "sessions#create"
+      delete '/users/sign_out' => "sessions#destroy"
+      post '/users' => "registrations#create"
+      put '/users' => "registrations#update"
     end
   end
 end
