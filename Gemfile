@@ -46,3 +46,4 @@ end
 
 # Authentication libraries
 gem 'doorkeeper'
+gem 'devise'
