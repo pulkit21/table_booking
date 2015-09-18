@@ -44,3 +44,5 @@ group :development, :test do
   gem 'spring'
 end
 
+# Authentication libraries
+gem 'doorkeeper'
