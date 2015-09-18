@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       delete '/users/sign_out' => "sessions#destroy"
       post '/users' => "registrations#create"
       put '/users' => "registrations#update"
+      post '/users/password' => "passwords#create"
+      put '/users/password' => "passwords#update"
     end
   end
 end
