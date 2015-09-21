@@ -8,8 +8,6 @@ class SessionsController < Devise::SessionsController
     return invalid_login_attempt unless resource
     if resource.valid_password?(params[:user][:password])
       sign_in(:user, resource)
-      # TODO
-      # resource.ensure_authentication_token
       if resource.present?
         render json: resource, status: 200
       end
@@ -22,8 +20,6 @@ class SessionsController < Devise::SessionsController
   def destroy
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     resource = User.find_for_database_authentication(:email => params[:email])
-    # TODO
-    # resource.authentication_token = nil
     resource.save
     render :json=> {:success=>true}
   end

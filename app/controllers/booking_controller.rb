@@ -1,6 +1,8 @@
 class BookingController < ApplicationController
 
   before_action :set_booking, only: [:show, :update, :destroy]
+  before_action :doorkeeper_authorize!
+  respond_to    :json
 
   def create
     @booking = current_user.bookings.new(booking_params)

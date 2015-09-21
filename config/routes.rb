@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  use_doorkeeper
+
+  use_doorkeeper do
+    controllers :applications => 'oauth/applications'
+  end
 
 
   scope '/api' do
     resources :restaurants
-
+    resources :applications, except: [:new, :edit]
     get '/bookings' => "booking#index"
     post '/booking' => "booking#create"
     get '/booking' => "booking#show"

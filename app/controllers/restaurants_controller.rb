@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
 
   before_action :set_restaurant, only: [:show, :update,:destroy]
+  before_action :doorkeeper_authorize!
+  respond_to    :json
 
   def index
     @restaurants  = current_user.restaurants

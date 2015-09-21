@@ -15,8 +15,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   # PUT /api/profile
   def update
-    # if request.headers['X-User-Token'].present?
-      # if request.headers['X-User-Token'] == resource.authentication_token
     resource_updated = resource.update(user_params)
     yield resource if block_given?
     if resource_updated
@@ -24,12 +22,6 @@ class RegistrationsController < Devise::RegistrationsController
     else
       render json: { user: resource.errors } , status: :unprocessable_entity
     end
-    #   else
-    #     render json: {errors: {user: "User not authenticated"}}, status: :unprocessable_entity
-    #   end
-    # else
-    #   render json: {errors: {user: "Invalid token"}}, status: :unprocessable_entity
-    # end 
   end
 
   def destroy
