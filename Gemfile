@@ -47,3 +47,6 @@ end
 # Authentication libraries
 gem 'doorkeeper'
 gem 'devise'
+
+# Heroku
+gem 'rails_12factor', group: :production
